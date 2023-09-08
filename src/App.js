@@ -1,13 +1,25 @@
 import './App.css';
+import { Routes,Route } from 'react-router-dom';
 import LandingPage from './Main-section/LandigPage';
-import Subscription from './Subscription/Subscription';
+import Signup from "./UserIntractpage/Signup";
+import { UserAuthContextProvider } from './context/UserAuthCountext';
+
 
 function App() {
+
+  
+
   return (
-    <div className="App">
-     <LandingPage/>
-     <Subscription/>
-    </div>
+<>
+<UserAuthContextProvider>
+  <Routes>
+       <Route path='/' element={<LandingPage/>}/>
+       <Route path='/signup' element={<Signup/>}/>
+    </Routes>
+    </UserAuthContextProvider>
+    </>
+  
+   
   );
 }
 

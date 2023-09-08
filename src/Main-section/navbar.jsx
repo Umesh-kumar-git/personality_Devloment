@@ -1,4 +1,5 @@
 import React,{useState ,useEffect} from "react";
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -50,7 +51,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="login-section">
-            <button className=" p-2 px-4 bg-black text-white rounded-sm text-center font-medium " >Login</button>
+          
+            <Link to="Signup">  
+            <button className=" p-2 px-4 bg-blue-500 text-white rounded-sm text-center font-medium " >Login</button>
+
+            </Link>
+            
         </div>
       </div>
       </div>

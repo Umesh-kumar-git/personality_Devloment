@@ -6,7 +6,7 @@ const Imagebox = () => {
     <div className="div  flex justify-center   ">
   <div className="  bg-[#f3f6fa] rounded-tl-[8rem] rou  w-3/4 flex mt-20 p-10   ">
  <div className='w-1/2 border-[#e5e7eb] '>
-  <img  className=' w-3/4 h-96 m-auto ' src="brand logo.jpg" alt="loading..." srcset="" />
+  <img  className=' w-3/4 h-96 m-auto ' src="brand logo.jpg" alt="loading..." />
   </div>
   <div className="dev w-1/2 text-center ">
     <h3 className='text-2xl mt-8 font-bold'> Why Personal Development Matters</h3>
