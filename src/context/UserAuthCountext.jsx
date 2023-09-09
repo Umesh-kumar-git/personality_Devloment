@@ -9,27 +9,30 @@ import{
 import { auth } from "../Firebase";
 
 
-const UserAuth = createContext(null)
+const UserAuthContext = createContext()
 
  export const  UserAuthContextProvider =({children})=>{
 
    const [user,setuser] =  useState();
+   const [IsOpen,setIsOpen] =useState(false);
 
+
+ 
     function signup(email,password ) {
-        
-        createUserWithEmailAndPassword(auth,email,password)
-    }
-
+    return  createUserWithEmailAndPassword(auth,email,password)  
+     
+       
+  }
+ 
     function login(email,password ) {
         
-        signInWithEmailAndPassword (auth,email,password)
+      return  signInWithEmailAndPassword (auth,email,password)
     }
 
     useEffect(()=>{
        const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
          
          setuser(currentUser)
-
         })
 
         return ()=>{
@@ -37,18 +40,21 @@ const UserAuth = createContext(null)
         }
     })
 
+     
+    
+    
     return(
-        <UserAuth.Provider value={{signup,user}}>
+        <UserAuthContext.Provider value={{signup,user,login,IsOpen,setIsOpen}}>
         {children}
-        </UserAuth.Provider>
+        </UserAuthContext.Provider>
     )
 
 }
   
 
-export function useUserAuth(params) {
+export function useUserAuth() {
     return(
-        useContext(UserAuth)
+        useContext(UserAuthContext)
     )
 }
 

@@ -2,11 +2,11 @@ import { useState } from "react";
 import React from 'react';
 import { useUserAuth } from "../context/UserAuthCountext";
 
- const Signup = () => {
+ const Login = () => {
    const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [Error,setError] = useState("")
-  const { signup} = useUserAuth();
+  const { login} = useUserAuth();
 
     const userEmail = (e) => {
     setemail(e.target.value);
@@ -21,13 +21,13 @@ import { useUserAuth } from "../context/UserAuthCountext";
     e.preventDefault()
   
     try {
-        await signup(email,password)
+        await login(email,password)
     } catch (err) {
       setError(err.message)
       console.log(err);
     }
   }
-  
+    
   
 
   return (
@@ -38,13 +38,13 @@ import { useUserAuth } from "../context/UserAuthCountext";
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
 
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Sign up to your account 
+              Login your Account
             </h2>
-            { Error && <div className="err ml-[1px] text-center p-2 bg-red-500">{Error}</div>}
+           { Error && <div className="err ml-[1px] text-center p-2 bg-red-500">{Error}</div>}
           
           </div>
 
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
+          <div className="mt-1 sm:mx-auto sm:w-full sm:max-w-sm  p-5  border-2  border-grey-200 ">
             <form className="space-y-6" onSubmit={submitBtn}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
@@ -92,7 +92,7 @@ import { useUserAuth } from "../context/UserAuthCountext";
                   onClick={submitBtn}
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Sign up
+                  LogIn 
                 </button>
             </form>
           </div>
@@ -104,4 +104,4 @@ import { useUserAuth } from "../context/UserAuthCountext";
   );
 };
 
-export default Signup;
+export default Login;

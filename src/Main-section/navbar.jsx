@@ -1,10 +1,16 @@
 import React,{useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
+import { useUserAuth } from "../context/UserAuthCountext";
 
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+   const {user,setIsOpen,IsOpen} = useUserAuth()
+   const [scrolled, setScrolled] = useState(false);
 
+
+
+
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 180) {
@@ -20,6 +26,10 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+    // const Toggleprofile =()=>{
+    //   setToggle(!true)
+    // }
 
   return (
     <>
@@ -52,10 +62,12 @@ const Navbar = () => {
         </div>
         <div className="login-section">
           
-            <Link to="Signup">  
+          {user ? 
+           <button onClick={()=>setIsOpen(!IsOpen)} className=" p-2 px-4 bg-blue-500 text-black rounded-sm text-center font-medium " >{user.email}</button>
+          : <Link to="Signup">  
             <button className=" p-2 px-4 bg-blue-500 text-white rounded-sm text-center font-medium " >Login</button>
-
-            </Link>
+            </Link> }
+           
             
         </div>
       </div>

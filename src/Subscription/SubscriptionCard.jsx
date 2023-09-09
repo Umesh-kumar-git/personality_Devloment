@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {TiTick} from "react-icons/ti"
 
 const card =[{
@@ -6,6 +7,7 @@ const card =[{
   Price:0,
   subHeading:"Explore the tool, save inspiration and create collections.",
   btn:"Join the Community",
+  link:"/freecontent",
   features:" Freatures Include:",
   ul:[{
     listOne:"explore how will work",
@@ -19,6 +21,7 @@ const card =[{
   Price:35,
   subHeading:"Get unlimited access to our new mood boarding tool",
   btn:"Start free Trial",
+  link:"/freecontent",
   features:" All free freatures, plus:",
   ul:[
     {
@@ -45,7 +48,7 @@ const SubsCard = ({discountPrice}) => {
           <div className="Cardscatogary-name text-4xl">{items.Price>0 ?   `$`+( items.Price - (discountPrice /100 * items.Price)) +"/m"  : "Free"}</div>
           <p className='subh
           eading text-zinc-400   '>{items.subHeading}</p>
-          <div className="joinBtn bg-blue-800 w-5/6 py-2 px-3 m-auto text-center rounded-full cursor-pointer ">{items.btn}</div>
+          <Link to={items.link} ><div className="joinBtn bg-blue-800 w-5/6 py-2 px-3 m-auto text-center rounded-full cursor-pointer ">{items.btn}</div></Link>
           <div className="features-box">
             <p className='featuresHeading  my-5 '>{items.features}</p>
             
