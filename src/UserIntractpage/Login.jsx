@@ -1,33 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from 'react';
 import { useUserAuth } from "../context/UserAuthCountext";
+import { useNavigate} from "react-router-dom";
 
  const Login = () => {
-   const [email, setemail] = useState("");
+  const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [Error,setError] = useState("")
-  const { login} = useUserAuth();
-
-    const userEmail = (e) => {
+  const { login,user} = useUserAuth();
+  
+  const navigate =useNavigate()
+ 
+  
+  const userEmail = (e) => {
     setemail(e.target.value);
-
+    
   };
   const userPassword = (e) => {
     setpassword(e.target.value);
   };
-
-  async function submitBtn(e) {
   
+  async function submitBtn(e) {
+     
+    setError('')
     e.preventDefault()
   
     try {
-        await login(email,password)
-    } catch (err) {
+      await login(email,password)
+    } 
+    catch (err) {
       setError(err.message)
       console.log(err);
     }
-  }
+    navigate('/')
     
+  }
+  
+  
   
 
   return (

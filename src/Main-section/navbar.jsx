@@ -9,7 +9,6 @@ const Navbar = () => {
 
 
 
-
  
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +63,7 @@ const Navbar = () => {
           
           {user ? 
            <button onClick={()=>setIsOpen(!IsOpen)} className=" p-2 px-4 bg-blue-500 text-black rounded-sm text-center font-medium " >{user.email}</button>
-          : <Link to="Signup">  
+          : <Link to="login">  
             <button className=" p-2 px-4 bg-blue-500 text-white rounded-sm text-center font-medium " >Login</button>
             </Link> }
            

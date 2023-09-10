@@ -7,6 +7,7 @@ import{
       
       } from "firebase/auth";
 import { auth } from "../Firebase";
+import { async } from "@firebase/util";
 
 
 const UserAuthContext = createContext()
@@ -26,7 +27,8 @@ const UserAuthContext = createContext()
  
     function login(email,password ) {
         
-      return  signInWithEmailAndPassword (auth,email,password)
+          return (signInWithEmailAndPassword (auth,email,password)  )
+     
     }
 
     useEffect(()=>{
@@ -40,11 +42,15 @@ const UserAuthContext = createContext()
         }
     })
 
+     function logout() {
+       return signOut(auth)
+     }
+
      
     
     
     return(
-        <UserAuthContext.Provider value={{signup,user,login,IsOpen,setIsOpen}}>
+        <UserAuthContext.Provider value={{signup,user,login,IsOpen,setIsOpen,logout}}>
         {children}
         </UserAuthContext.Provider>
     )

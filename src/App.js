@@ -13,6 +13,7 @@ function App() {
     <>
       <UserAuthContextProvider>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route
             path="/freecontent"
             element={
@@ -21,7 +22,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>

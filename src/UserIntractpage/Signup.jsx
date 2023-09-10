@@ -1,9 +1,10 @@
 import { useState } from "react";
-import React from 'react';
+import { Link } from "react-router-dom";
+import{FcGoogle} from "react-icons/fc"
 import { useUserAuth } from "../context/UserAuthCountext";
 
  const Signup = () => {
-   const [email, setemail] = useState("");
+  const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [Error,setError] = useState("")
   const { signup} = useUserAuth();
@@ -17,7 +18,7 @@ import { useUserAuth } from "../context/UserAuthCountext";
   };
 
   async function submitBtn(e) {
-  
+   setError('')
     e.preventDefault()
   
     try {
@@ -27,7 +28,6 @@ import { useUserAuth } from "../context/UserAuthCountext";
       console.log(err);
     }
   }
-  
   
 
   return (
@@ -94,6 +94,11 @@ import { useUserAuth } from "../context/UserAuthCountext";
                 >
                   Sign up
                 </button>
+              <div className="login-link">Do you Have account? <Link to={"/login"} className="underline ml-3 font-semibold text-blue-500 ">Login </Link></div>
+                <div className="div w-full text-center">
+                    OR
+                 </div>
+                 <button className="google-Signin  border border-gray-300 cursor-pointer p-2 flex   justify-center space-x-5 text-center w-full   "> < FcGoogle className="text-2xl     "/> <span>Sign In with goggle </span> </button> 
             </form>
           </div>
         </div>
