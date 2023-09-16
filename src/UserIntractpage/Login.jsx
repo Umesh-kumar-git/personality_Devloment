@@ -7,7 +7,8 @@ import { useNavigate} from "react-router-dom";
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [Error,setError] = useState("")
-  const { login,user} = useUserAuth();
+  const [localStore,setlocalStore]=useState('')
+  const { login} = useUserAuth();
   
   const navigate =useNavigate()
  
@@ -26,16 +27,20 @@ import { useNavigate} from "react-router-dom";
     e.preventDefault()
   
     try {
-      await login(email,password)
-    } 
-    catch (err) {
-      setError(err.message)
-      console.log(err);
-    }
+      await login(email,password) 
+     
+      
     navigate('/')
-    
+  } 
+  catch (err) {
+    setError(err.message)
+    console.log(err);
   }
   
+  
+}
+
+
   
   
 

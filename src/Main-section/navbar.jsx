@@ -12,7 +12,7 @@ const Navbar = () => {
  
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 180) {
+      if (window.scrollY > 120) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
     <div className= {`${
         scrolled ? 'bg-opacity-75 backdrop-blur-md bg-blue-100' : ''
-      } py-4 header w-full  z-20  fixed top-0  `}>
+      } py-4 header w-full  z-20  fixed top-0  border-b-[1px] border-grey-500`}>
       <div className=  "Navbar-section  w-full flex justify-evenly items-center font-sans   px-3 ">
         <div className="logo-section  ">
           <div className="logo  ">

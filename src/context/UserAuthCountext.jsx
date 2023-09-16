@@ -7,17 +7,17 @@ import{
       
       } from "firebase/auth";
 import { auth } from "../Firebase";
-import { async } from "@firebase/util";
 
 
 const UserAuthContext = createContext()
 
  export const  UserAuthContextProvider =({children})=>{
 
-   const [user,setuser] =  useState();
+   const [user,setuser] =  useState('');
    const [IsOpen,setIsOpen] =useState(false);
 
 
+   
  
     function signup(email,password ) {
     return  createUserWithEmailAndPassword(auth,email,password)  
@@ -33,14 +33,13 @@ const UserAuthContext = createContext()
 
     useEffect(()=>{
        const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
-         
          setuser(currentUser)
         })
 
         return ()=>{
             unsubscribe();
         }
-    })
+    },[])
 
      function logout() {
        return signOut(auth)
